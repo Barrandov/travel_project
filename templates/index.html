@@ -1,0 +1,45 @@
+{% extends 'base.html' %} {% block body %}
+<main class="container mt-3">
+    <!-- HERO -->
+    <section class="jumbotron text-center mt-4" style="background: url('https://images.unsplash.com/photo-1428908728789-d2de25dbd4e2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60');background-size: cover;">
+        <h1 class="display-4">Всякие туры</h1>
+        <p class="lead">{{ subtitle }}</p>
+        <p class="mt-5 w-50 mx-auto">{{ description }}</p>
+    </section>
+    <!-- CARDS -->
+    <div class="row mt-5">
+
+        {% for value in tours[:6] %}
+
+        <div class="col-4">
+            <div class="card mb-4">
+                <div class="embed-responsive embed-responsive-16by9">
+                    <a href="/tours/{{ value.id }}/">
+                        <img class="card-img-top embed-responsive-item" src="{{ value.picture }}" alt="" />
+                    </a>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+
+                        <div class="col-12">
+                            <a href="/tours/{{ value.id }}/" class="h6 card-title">
+              {{ value.country }}: {{ value.title }}
+                </a>
+                        </div>
+
+                    </div>
+                    <p class="card-text" style="text-align: justify; padding-top: 5px; font-size: 14px">{{ value.description | truncate(140) }}</p>
+                    <p class="text" style="font-size: 14px;"><span style="border: 1px solid #000000;padding:3px;">{{ value.date }}</span>
+                        <span style="border: 1px solid #000000;padding:3px;">{{ value.nights }} ночей</span>
+                        <span style="border: 1px solid #000000;padding:3px;">{{ value.price | beautiful_price}} ₽</span>
+                        <span style="border: 1px solid #000000;padding:3px;">{{ value.stars }}★</span></p>
+                </div>
+            </div>
+        </div>
+
+        {% endfor %}
+
+    </div>
+</main>
+
+{% endblock %}
