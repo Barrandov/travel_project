@@ -3,7 +3,7 @@
 <main class="container mt-3">
     <h1 class="display-5 mt-4">Летим из {{dep_city}}</h1>
 
-    <p class="mb-4">Найдено {{ tours|length }} туров, от {{ price_tours | min | beautiful_price }} ₽ до {{ price_tours | max | beautiful_price }} ₽ и от {{ nights_tours | min }} ночей до {{ nights_tours | max }} ночей</p>
+    <p class="mb-4">Найдено {{ tours|length }} туров, от {{ (tours|min(attribute='price')).price |  beautiful_price }} ₽ до {{ (tours|max(attribute='price')).price | beautiful_price }} ₽ и от {{ (tours|min(attribute='nights')).nights }} ночей до {{ (tours|max(attribute='nights')).nights }} ночей</p>
     <!-- CARDS -->
     <div class="row mt-5">
 
