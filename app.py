@@ -25,9 +25,7 @@ def render_departure(departure):
                            tours=[i for i in tours if i['departure'] == departure],
                            departures=departures,
                            title=title,
-                           dep_city=departures[departure][3:],
-                           price_tours=[i['price'] for i in tours if i['departure'] == departure],
-                           nights_tours=[i['nights'] for i in tours if i['departure'] == departure])
+                           dep_city=departures[departure][3:])
 
 
 @app.route('/tours/<int:id>/')
